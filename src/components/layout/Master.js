@@ -1,7 +1,8 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-
-
+import Nav from "../partials/Nav";
+import Sidebar from "../partials/SideBar";
+import Footer from "../partials/Footer";
 const Master = ()=> {
     return (
         <>

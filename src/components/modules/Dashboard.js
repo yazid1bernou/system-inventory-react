@@ -1,14 +1,12 @@
 import React from "react";
+import BreadCrumb from "../partials/BreadCrumb";
 
 
 
 const Dashboard = ()=> {
     return (
         <div>
-             <h1 className="mt-4">Dashboard</h1>
-                        <ol className="breadcrumb mb-4">
-                            <li className="breadcrumb-item active">Dashboard</li>
-                        </ol>
+                       <BreadCrumb  title={'Dashboard test'}/>
                         <div className="row">
                             <div className="col-xl-3 col-md-6">
                                 <div className="card bg-primary text-white mb-4">
