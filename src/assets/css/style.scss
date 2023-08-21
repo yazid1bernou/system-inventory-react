@@ -1,3 +1,13 @@
 @import "variables";
 @import "mixin";
 @import "global";
+
+#login {
+    width: 100vw;
+    height: 100vh;
+    position: relative ;
+    .card {
+       @include center ;
+       
+    }
+}
