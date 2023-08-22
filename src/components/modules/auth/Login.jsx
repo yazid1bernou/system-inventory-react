@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import axios  from 'axios';
   const Login = () => {
 
     const [input , inputSet] = useState({}) ;
@@ -9,7 +9,10 @@ import React, { useState } from 'react'
       console.log(input);
     }
 
-   
+    const  handleLogin = () => {
+       axios.post('http://localhost:8000/api/login' , input)
+       .then(res => { console.log(res.data)})
+    }
     return (
         <div  className="container-fluid bg-theme" id={"login"}>
             <div className='row'>
@@ -37,10 +40,11 @@ import React, { useState } from 'react'
                                     name={'password'}
                                     value={input.password}
                                     onChange={handleInput}
+                                   
                                     />
                                 </label>
                                 <div className="d-grid mt-4">
-                                    <button className={'btn btn-outline-success'}>  Login</button>
+                                    <button className={'btn btn-outline-success'} onClick={handleLogin}>  Login</button>
                                 </div>
                             </div>
                         </div>
