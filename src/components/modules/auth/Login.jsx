@@ -3,16 +3,18 @@ import React, { useState } from 'react'
   const Login = () => {
 
     const [input , inputSet] = useState({}) ;
-    const handleInput = () => {
 
+    const handleInput = (e) => {
+      inputSet(prevState => ({...prevState , [e.target.name] :  e.target.value }));
+      console.log(input);
     }
 
-
+   
     return (
         <div  className="container-fluid bg-theme" id={"login"}>
             <div className='row'>
                     <div className="col-md-6">
-                        <div className="card">
+                        <div className="card ">
                             <div className="card-header">
                                 <h4>Login</h4>
                             </div>
@@ -37,6 +39,9 @@ import React, { useState } from 'react'
                                     onChange={handleInput}
                                     />
                                 </label>
+                                <div className="d-grid mt-4">
+                                    <button className={'btn btn-outline-success'}>  Login</button>
+                                </div>
                             </div>
                         </div>
                     </div>
