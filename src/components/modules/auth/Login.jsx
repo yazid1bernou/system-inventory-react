@@ -11,7 +11,11 @@ import axios  from 'axios';
 
     const  handleLogin = () => {
        axios.post('http://localhost:8000/api/login' , input)
-       .then(res => { console.log(res.data)})
+       .then(res => { 
+        localStorage.email =  res.data.email 
+       
+
+       })
     }
     return (
         <div  className="container-fluid bg-theme" id={"login"}>
