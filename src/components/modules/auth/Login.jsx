@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, {useState } from 'react'
 import axios  from 'axios';
   const Login = () => {
-
+    
     const [input , inputSet] = useState({}) ;
-
+    
     const handleInput = (e) => {
       inputSet(prevState => ({...prevState , [e.target.name] :  e.target.value }));
       console.log(input);
@@ -13,10 +13,15 @@ import axios  from 'axios';
        axios.post('http://localhost:8000/api/login' , input)
        .then(res => { 
         localStorage.email =  res.data.email 
-       
+        localStorage.name =  res.data.name 
+        localStorage.phone =  res.data.phone
+        localStorage.photo =  res.data.photo
+        localStorage.token =  res.data.token
+        window.location.reload()
 
        })
     }
+   
     return (
         <div  className="container-fluid bg-theme" id={"login"}>
             <div className='row'>
