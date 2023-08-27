@@ -1,8 +1,10 @@
 import React, {useState } from 'react'
 import axios  from 'axios';
+import { error } from 'jquery';
   const Login = () => {
     
     const [input , inputSet] = useState({}) ;
+    const [errors , setErrors] = useState([]) ;
     
     const handleInput = (e) => {
       inputSet(prevState => ({...prevState , [e.target.name] :  e.target.value }));
@@ -19,6 +21,10 @@ import axios  from 'axios';
         localStorage.token =  res.data.token
         window.location.reload()
 
+       }).catch(errors => {
+          if(errors.response.status ==  422 ) {
+             setErrors(errors.response.data.errors) 
+          }
        })
     }
    
@@ -40,6 +46,7 @@ import axios  from 'axios';
                                     value={input.email}
                                     onChange={handleInput}
                                     />
+                                    <p className={'login-error-msg'}><small>{ errors.email != undefined ? errors.email[0] : null}</small> </p>
                                 </label>
                                 <label className={'w-100'}>
                                     <p> Password</p>
@@ -51,6 +58,8 @@ import axios  from 'axios';
                                     onChange={handleInput}
                                    
                                     />
+                                    <p className={'login-error-msg'}><small>{ errors.password != undefined ? errors.password[0] : null}</small> </p>
+
                                 </label>
                                 <div className="d-grid mt-4">
                                     <button className={'btn btn-outline-success'} onClick={handleLogin}>  Login</button>
