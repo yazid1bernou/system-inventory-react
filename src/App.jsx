@@ -6,6 +6,7 @@ import "./assets/css/style.scss";
 import { RouterProvider } from "react-router-dom";
 import ProjectRouter from "./components/router/ProjectRouter";
 import PublicRouter from "./components/router/PublicRouter";
+import axios from "axios";
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
   useEffect(() => {
       if (localStorage.token != undefined) {
           authSet(true)
+          axios.defaults.headers.common['Authorization'] =`Bearer ${localStorage.token}`
       }
   } , [])
   return (
