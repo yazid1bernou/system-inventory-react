@@ -1,6 +1,6 @@
 import React, {useState } from 'react'
 import axios  from 'axios';
-import { error } from 'jquery';
+
   const Login = () => {
     
     const [input , inputSet] = useState({}) ;
@@ -37,10 +37,10 @@ import { error } from 'jquery';
                                 <h4>Login</h4>
                             </div>
                             <div className="card-body"> 
-                                <label className={'w-100'}>
+                                <label className={'w-100 mt-4'}>
                                     <p> Email /Phone</p>
                                     <input 
-                                    className={'form-control mt-2'}
+                                    className={ errors.email != undefined ? 'form-control mt-2 is-invalid' : 'form-control mt-2'}
                                     type={'text'}
                                     name={'email'}
                                     value={input.email}
@@ -48,10 +48,10 @@ import { error } from 'jquery';
                                     />
                                     <p className={'login-error-msg'}><small>{ errors.email != undefined ? errors.email[0] : null}</small> </p>
                                 </label>
-                                <label className={'w-100'}>
+                                <label className={'w-100 mt-4'}>
                                     <p> Password</p>
                                     <input 
-                                    className={'form-control mt-4'}
+                                    className={errors.password != undefined ? 'form-control mt-2 is-invalid' : 'form-control mt-2'}
                                     type={'password'}
                                     name={'password'}
                                     value={input.password}
